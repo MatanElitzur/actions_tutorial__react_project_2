@@ -1,5 +1,6 @@
 name: Events Demo 1
 #on: [push] # https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows
+#on: [push, pull_request]
 on:
   pull_request:
     #types:  [opened, edited] #Activity Type types
@@ -8,6 +9,17 @@ on:
     #   - opened
     #   - edited
   workflow_dispatch:  #This way to trigger action via github UI
+  push: # filters --> https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpull_requestpull_request_targetbranchesbranches-ignore
+    branches: #This is the branch filter
+      - main # Only pushes to the main branch will start the workflow
+      #- 'dev-*' # -->All branches that starts with dev- (not include *)will start the workflow
+      # example dev-new OR dev-this-is-new 
+      #- 'feat/**' # --> All branches that starts with the word feat/ and any other word or slash combinations after
+      # example feat/new feat/new/button
+    paths: #This is the paths filter, will start the workflow only if one of the files in the path had been change and we targeted one of branches of filter
+      - '.github/workflows/*'
+    paths-ignore: #This is the path-ignore filter,
+      - '.github/workflows/*' #It will not trigger the workflow if we will change the following path and we targeted one of branches of filter
 jobs:
   deploy:
     runs-on: ubuntu-latest
