@@ -11,7 +11,7 @@ on:
   workflow_dispatch:  #This way to trigger action via github UI
   push: # filters --> https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#onpull_requestpull_request_targetbranchesbranches-ignore
     branches: #This is the branch filter
-      - main # Only pushes to the main branch will start the workflow
+      - main # Only pushes to the main branch will start the workflow, if I will push directly to dev branch nothing will happend
       #- 'dev-*' # -->All branches that starts with dev- (not include *)will start the workflow
       # example dev-new OR dev-this-is-new 
       #- 'feat/**' # --> All branches that starts with the word feat/ and any other word or slash combinations after
