@@ -3,7 +3,7 @@ name: Events Demo 1
 #on: [push, pull_request]
 on:
   pull_request:
-    #types:  [opened, edited] #Activity Type types
+    #types: [opened, edited] #Activity Type types
     types: opened
     # types:
     #   - opened
